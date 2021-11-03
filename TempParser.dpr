@@ -24,7 +24,7 @@ var
 
     fileIn, fileOut : TextFile;
 
-    count           : tCountAr;
+    absDiff, relDiff, height: integer;
 
 begin
 
@@ -49,7 +49,7 @@ begin
     anCode(fileIn, lexems, nLexems);
     closeFile(fileIn);
 
-  {  // create output
+    // create output
     AssignFile(fileOut, filename + '_out' + '.txt', CP_UTF8);   // open file
     rewrite(fileOut);
     for i := 0 to nLexems do
@@ -57,12 +57,13 @@ begin
     closeFile(fileOut);
 
 
-    countLex(count, lexems);
-
+    countLex(absDiff, relDiff, height, lexems);
+     {
     assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
     rewrite(fileOut);
     formOut(count, fileOut);
     closeFile(fileOut);    }
+
 
     readln;
 

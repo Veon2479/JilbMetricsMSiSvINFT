@@ -16,6 +16,7 @@ interface
                       num: integer;
                       isOperator: boolean;
                     end;
+    tLexType = (lIf, lSwitch, lFor, lWhile, lRepeat, lConv, lNone);
 
 
   const
@@ -55,6 +56,40 @@ interface
         BLACKLIST = ' } ] ) ';
   var
     nLexems: integer;
-implementation
 
+  procedure push(const NUM: integer);
+  function pop: integer;
+  function peek(const NUM: integer): integer;     //number from the end of stack
+
+implementation
+  var
+    Stack: array[1..200] of integer;
+    SP: integer = 1;  //first empty
+
+  procedure push(const NUM: integer);
+    begin
+      Stack[SP]:=NUM;
+      inc(SP);
+    end;
+
+  function pop: integer;
+    begin
+      RESULT:=Stack[SP];
+      dec(SP);
+    end;
+
+  function peek(const NUM: integer): integer;
+    begin
+      RESULT:=Stack[SP-num];
+    end;
+
+end.
+
+Initialization
+  var
+    i: integer;
+  Begin
+    for i:=1 to 200 do
+      Stack[i]:=0;
+  End;
 end.
