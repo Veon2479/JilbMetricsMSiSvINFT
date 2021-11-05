@@ -16,6 +16,7 @@ interface
                       num: integer;
                       isOperator: boolean;
                     end;
+
     tLexType = (lIf, lSwitch, lFor, lWhile, lRepeat, lConv, lNone, lCase);
 
 
@@ -44,6 +45,8 @@ interface
         ENTRIES = ' ( { = < : ? assert catch if else case switch default try catch finally throw';                  //;?????
                                                                  }
 
+
+
         MAJORENTRIES = ' ( { [ = ? : assert if switch try throw ';
         MINORENTRIES = ' else case default catch finally ';
         CYCLES = ' do for while ';
@@ -54,6 +57,26 @@ interface
         OP_SIGNS = ' ~ / \ +  - * % & | '' , " ; < > ';
         DSIGNS = ' <= >= == != ++ -- || && ';
         BLACKLIST = ' } ] ) ';
+
+        STR_OP_ASS    = ' = += -= *= /= %= &= ^= |= <<= >>= >>>= ';
+        STR_OP_UNAR   = ' ++ -- ~ ! ';
+        STR_OP_LOGIC  = ' % & | && || ^ == != ';
+        STR_OP_REL    = ' < > <= >= instanceof ';
+        STR_OP_AR     = ' << >> >>> + - * / % ';
+        //tLexType
+        STR_lIf       = ' if ';
+        STR_lSwitch   = ' switch ';
+        STR_lFor      = ' for ';
+        STR_lWhile    = ' while ';
+        STR_lRepeat   = ' do ';
+        STR_lConv     = ' ? ';
+        STR_lCase     = ' case ';
+        STR_lDeflt    = ' default ';
+
+        STR_OPERATORS = STR_OP_ASS + STR_OP_UNAR
+                    + STR_OP_LOGIC + STR_OP_REL + STR_OP_AR
+                    + STR_lIf + STR_lSwitch + STR_lFor + STR_lWhile
+                    + STR_lRepeat + STR_lConv + STR_lCase;
   var
     nLexems: integer;
 

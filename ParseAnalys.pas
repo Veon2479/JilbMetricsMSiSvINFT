@@ -6,6 +6,7 @@ interface
   uses
     customTypes, Math;
 
+
   procedure countLex( var ABSDIFF, RELDIFF, HEIGHT: integer; var LEXEMS: TArray; const NLEX: integer);
 
 implementation
@@ -18,16 +19,27 @@ implementation
 
 
     function detType(const LEX: integer): tLexType;
-      begin
+    var tmp : string;
+    begin
+        tmp := ' ' + lexems[LEX] + ' ';
+        if      tmp = STR_lIf     then result:= lIf
+        else if tmp = STR_lSwitch then result:= lSwitch
+        else if tmp = STR_lFor    then result:= lFor
+        else if tmp = STR_lWhile  then result:= lWhile
+        else if tmp = STR_lRepeat then result:= lRepeat
+        else if tmp = STR_lConv   then result:= lConv
+        else if tmp = STR_lCase   then result:= lCase
+        else if tmp = STR_lDeflt  then result:= lCase
+        else                           result:= lNone;
 
-            //TODO:определить какая лексема текущая - возможное использование пробегания вперёд
-      end;
+        //определить какая лексема текущая - возможное использование пробегания вперёд
+    end;
 
     function isOperator(const LEX: integer): boolean;
-      begin
-
-            //TODO:определить какая лексема текущая - возможное использование пробегания вперёд
-      end;
+    begin
+        //определить какая лексема текущая - возможное использование пробегания вперёд
+        result := pos(' ' + lexems[LEX] + ' ', STR_OPERATORS) <> 0;
+    end;
 
     function findEnding(const LEX: integer; const LEXTYPE: tLexType): integer;
       var
@@ -159,29 +171,29 @@ implementation
       end;
 
     begin
-      cur:=0;
-      HEIGHT:=0;
-      curHeight:=0;
-      ending:=NLEX;
+      cur:=0;	// cur lex num
+      HEIGHT:=0;	// cur max height
+      curHeight:=0;	// cur block height
+      ending:=NLEX;	// lexems bound
       while cur<=NLEX do
         begin
 
-          if isOperator(cur) then
+
+        while cur <= nLexems do
+        begin
+            if isOperator(cur) then
             begin
-             inc(RELDIFF);
+
+             inc(RELDIFF);	// count sum of operators
              curType:=detType(cur);
              if curType=lSwitch then
                 inc(ABSDIFF);
              if (curType<>lNone)and(curType<>lSwitch) then
               begin
                 if curType<>lCase then inc(ABSDIFF);
-
-
-                if curHeight>HEIGHT then HEIGHT:=curHeight;
-
+                
                 if LEXEMS[cur]<>'default' then
                   begin
-
                     push(ending);
                     ending:=findEnding(cur, curType);     //конец блока, в котором могут быть вложенные условия
                                                       //для контроля вложенности
@@ -190,15 +202,17 @@ implementation
 
                   //TODO:увеличение текущей высоты с учётом свитча и прочего
                 curHeight:=getLen;
+				if curHeight>HEIGHT then HEIGHT:=curHeight;// check if max height reached
                   //DONE
 
               end;
 
             end;
-                      //мне начинает казаться, что кроме этих двух TODO добавлять нечего
-          inc(cur);
-          if cur=ending then
+                    //мне начинает казаться, что кроме этих двух TODO добавлять нечего
+            inc(cur);
+            if cur = ending then
             begin
+
               ending:=pop;
 
                 //TODO:уменьшение текущей высоты с учётом свитча и прочего
@@ -210,6 +224,7 @@ implementation
 
       dec(HEIGHT);
       RELDIFF:=ABSDIFF*100 div RELDIFF;
+
 
     end;
 
