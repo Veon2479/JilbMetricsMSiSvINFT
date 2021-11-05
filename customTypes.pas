@@ -30,7 +30,7 @@ interface
             'ERROR! Parser exeeded number of readed lexems!');
 
         Letters : TChar = ['A'..'Z', 'a'..'z', '_', '0'..'9', '@', '^', '.', '#', '$'];
-        Signs : TChar = ['~', ':', '=', '/', '\', '+', '-', '*', '%', '&', '|', '<', '>', '?', {';',} '''', ',', '"'];
+        Signs : TChar = ['~', ':', '=', '/', '\', '+', '-', '*', '%', '&', '|', '<', '>', '?', {';',} '''', ',', '"', '!'];
         Delimeters : TChar = ['{', '}', '[', ']', '(', ')', ';', ','];
 
         STR_VARIABLE_HEADER = ' int byte short long boolean char double float ';

@@ -1,47 +1,26 @@
 
-
-    public static void main(String[] args) {
-	int a = args ? 0 : 1;
-
-	if (a = 0)
-		a++;
-	else
-		a--;
+public static void main(String[] args) {
 
 
-	while (b > -1) {
-		switch (a)
-		{
-			case 1: log(a);
-			case 0: log(-a);
-                        break;
-                        case 2: print();
-                        case 4: dom;
-
-                        case 5: don;
-
-                        case 6: aga;
-					 
-                        default: buga;
-
-		}
-
-	}
-
-        if (a==b) foo();
-        else{
-	if (a==b) c=d;
-else d=c;
-        aaaaaa;
-        }
-
+	// hei = 5, op = 18
+	if (a % b >> 2) {
+		// hei = 1, op = 2
+		do {
+			i++;
+		} while (i < 0);
+	
+	} else {
+		// hei = 4, op = 14
+		for (int i = 10; i < 20; i++)
+			// hei = 3, op = 11
+			switch (i--) {
+				case a    : i++; b -= i; break;
+				case b    : i--; b += i; break;
+				case a + b: i*=2; b = i;
+				case a - b: i*=2; b = i; break;
+			}
+	} 
+	
  	// return;
-
-
+	
     }
-
-
-
-
-
-    

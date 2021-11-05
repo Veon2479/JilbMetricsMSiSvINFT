@@ -227,6 +227,7 @@ implementation
              curType:=detType(cur);
              if curType=lSwitch then
                 inc(ABSDIFF);
+             if curType=lCase then dec(RELDIFF);
              if (curType<>lNone)and(curType<>lSwitch) then
               begin
                 if curType<>lCase then inc(ABSDIFF);
