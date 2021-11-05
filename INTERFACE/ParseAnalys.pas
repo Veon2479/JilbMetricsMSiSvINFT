@@ -227,6 +227,7 @@ implementation
              curType:=detType(cur);
              if curType=lSwitch then
                 inc(ABSDIFF);
+             if curType=lCase then dec(RELDIFF);
              if (curType<>lNone)and(curType<>lSwitch) then
               begin
                 if curType<>lCase then inc(ABSDIFF);
@@ -252,11 +253,14 @@ implementation
             if cur = ending then
             begin
 
-
               ending:=pop;
+              while (getLen>0)and(peek(1)<=cur) do
+                ending:=pop;
+
+              {ending:=pop;
               if cur=ending then
               while (getLen>0)and(peek(1)=ending) do
-                 ending:=pop;
+                 ending:=pop;  }
 
                 //TODO:уменьшение текущей высоты с учётом свитча и прочего
               curHeight:=getLen;
