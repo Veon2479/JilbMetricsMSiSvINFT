@@ -17,8 +17,11 @@
                         break;
                         case 2: print();
                         case 4: dom;
+
                         case 5: don;
+
                         case 6: aga;
+					 
                         default: buga;
 
 		}
@@ -27,6 +30,8 @@
 
         if (a==b) foo();
         else{
+	if (a==b) c=d;
+else d=c;
         aaaaaa;
         }
 

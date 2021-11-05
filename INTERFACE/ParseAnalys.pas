@@ -73,6 +73,25 @@ implementation
                   while LEXEMS[cur]<>';' do
                     inc(cur);
 
+              if LEXEMS[cur+1]='else' then
+                  begin
+                    inc(cur, 2);
+                    if LEXEMS[cur]='{' then
+                        begin
+                          counter:=1;
+                          while counter<>0 do
+                            begin
+                              inc(cur);
+                              if LEXEMS[cur]='{' then inc(counter)
+                                else if LEXEMS[cur]='}' then dec(counter);
+                            end;
+                        end
+                      else
+                        while LEXEMS[cur]<>';' do
+                          inc(cur);
+
+                  end;
+
             end
           else if (LEXTYPE=lCase) then
               begin
@@ -182,7 +201,7 @@ implementation
 
             if isOperator(cur) then
             begin
-
+               // writeln('operators:  ',LEXEMS[cur]);
              inc(RELDIFF);	// count sum of operators
              curType:=detType(cur);
              if curType=lSwitch then
@@ -190,7 +209,7 @@ implementation
              if (curType<>lNone)and(curType<>lSwitch) then
               begin
                 if curType<>lCase then inc(ABSDIFF);
-
+                
                 if LEXEMS[cur]<>'default' then
                   begin
                     push(ending);
@@ -201,7 +220,7 @@ implementation
 
                   //TODO:увеличение текущей высоты с учётом свитча и прочего
                 curHeight:=getLen;
-				if curHeight>HEIGHT then HEIGHT:=curHeight;// check if max height reached
+				        if curHeight>HEIGHT then HEIGHT:=curHeight;// check if max height reached
                   //DONE
 
               end;
@@ -214,6 +233,7 @@ implementation
 
 
               ending:=pop;
+              if cur=ending then
               while (getLen>0)and(peek(1)=ending) do
                  ending:=pop;
 
@@ -233,4 +253,3 @@ implementation
     end;
 
 end.
-
