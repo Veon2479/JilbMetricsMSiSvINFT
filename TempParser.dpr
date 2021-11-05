@@ -57,7 +57,8 @@ begin
     closeFile(fileOut);
 
 
-    countLex(absDiff, relDiff, height, lexems);
+    countLex(absDiff, relDiff, height, lexems, nLexems);
+
      {
     assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
     rewrite(fileOut);

@@ -16,7 +16,7 @@ interface
                       num: integer;
                       isOperator: boolean;
                     end;
-    tLexType = (lIf, lSwitch, lFor, lWhile, lRepeat, lConv, lNone);
+    tLexType = (lIf, lSwitch, lFor, lWhile, lRepeat, lConv, lNone, lCase);
 
 
   const
@@ -60,6 +60,7 @@ interface
   procedure push(const NUM: integer);
   function pop: integer;
   function peek(const NUM: integer): integer;     //number from the end of stack
+  function getLen: integer;
 
 implementation
   var
@@ -81,6 +82,11 @@ implementation
   function peek(const NUM: integer): integer;
     begin
       RESULT:=Stack[SP-num];
+    end;
+
+  function getLen: integer;
+    begin
+      RESULT:=SP;
     end;
 
 end.
