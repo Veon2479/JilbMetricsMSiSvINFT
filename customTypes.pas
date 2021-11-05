@@ -84,6 +84,7 @@ interface
   function pop: integer;
   function peek(const NUM: integer): integer;     //number from the end of stack
   function getLen: integer;
+  procedure resetStack;
 
 implementation
   var
@@ -98,27 +99,39 @@ implementation
 
   function pop: integer;
     begin
-      RESULT:=Stack[SP];
+      RESULT:=Stack[SP-1];
+      Stack[SP-1]:=0;
       dec(SP);
     end;
 
   function peek(const NUM: integer): integer;
     begin
+      RESULT:=-1;
+      if SP<>1 then
       RESULT:=Stack[SP-num];
     end;
 
   function getLen: integer;
     begin
-      RESULT:=SP;
+      RESULT:=SP-1;
+    end;
+
+  procedure resetStack;
+    var
+      i: integer;
+    begin
+      SP:=1;
+      for i:=1 to 200 do
+      Stack[i]:=0;
     end;
 
 end.
 
-Initialization
+{Initialization
   var
     i: integer;
   Begin
     for i:=1 to 200 do
       Stack[i]:=0;
   End;
-end.
+end. }
