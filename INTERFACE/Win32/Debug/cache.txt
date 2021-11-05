@@ -1,26 +1,38 @@
 
-    public static void main(String[] args) {
-	int a = args ? 0 : 1; 
 
-	if (a = 0) 
+    public static void main(String[] args) {
+	int a = args ? 0 : 1;
+
+	if (a = 0)
 		a++;
-	else	
+	else
 		a--;
 
-	if (a = 1) 
-		b = 10; 
-	
-	while b > -1 {
-		switch (a) 
+
+	while (b > -1) {
+		switch (a)
 		{
 			case 1: log(a);
-			case 0: log(-a); 
+			case 0: log(-a);
+                        break;
+                        case 2: print();
+                        case 4: dom;
+                        case 5: don;
+                        case 6: aga;
+                        default: buga;
+
 		}
-		
+
 	}
-	
+
+        if (a==b) foo();
+        else{
+        aaaaaa;
+        }
+
  	// return;
-	
+
+
     }
 
 

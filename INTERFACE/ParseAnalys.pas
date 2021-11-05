@@ -182,7 +182,7 @@ implementation
 
             if isOperator(cur) then
             begin
-                writeln('operators:  ',LEXEMS[cur]);
+
              inc(RELDIFF);	// count sum of operators
              curType:=detType(cur);
              if curType=lSwitch then
