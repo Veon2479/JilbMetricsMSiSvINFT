@@ -171,6 +171,7 @@ implementation
       end;
 
     begin
+      resetStack;
       cur:=0;	// cur lex num
       HEIGHT:=0;	// cur max height
       curHeight:=0;	// cur block height
@@ -181,7 +182,7 @@ implementation
 
             if isOperator(cur) then
             begin
-
+                writeln('operators:  ',LEXEMS[cur]);
              inc(RELDIFF);	// count sum of operators
              curType:=detType(cur);
              if curType=lSwitch then
@@ -189,7 +190,7 @@ implementation
              if (curType<>lNone)and(curType<>lSwitch) then
               begin
                 if curType<>lCase then inc(ABSDIFF);
-                
+
                 if LEXEMS[cur]<>'default' then
                   begin
                     push(ending);
@@ -211,7 +212,10 @@ implementation
             if cur = ending then
             begin
 
+
               ending:=pop;
+              while (getLen>0)and(peek(1)=ending) do
+                 ending:=pop;
 
                 //TODO:уменьшение текущей высоты с учётом свитча и прочего
               curHeight:=getLen;
@@ -220,10 +224,13 @@ implementation
             end;
         end;
 
-      dec(HEIGHT);
+      //dec(HEIGHT);
+
+      if RELDIFF<>0 then
       RELDIFF:=ABSDIFF*100 div RELDIFF;
 
 
     end;
 
 end.
+
