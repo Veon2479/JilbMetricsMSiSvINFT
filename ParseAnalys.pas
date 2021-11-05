@@ -253,11 +253,14 @@ implementation
             if cur = ending then
             begin
 
-
               ending:=pop;
+              while (getLen>0)and(peek(1)<=cur) do
+                ending:=pop;
+
+              {ending:=pop;
               if cur=ending then
               while (getLen>0)and(peek(1)=ending) do
-                 ending:=pop;
+                 ending:=pop;  }
 
                 //TODO:уменьшение текущей высоты с учётом свитча и прочего
               curHeight:=getLen;
