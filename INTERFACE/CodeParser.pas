@@ -62,8 +62,8 @@ implementation
                 se:= ERRORMSG[err];
                 parseLexem(lexems, se, nLexems);
             end;
-            //ShowMessage('WoopS! An error occured while parsing primary code! Code: ' + IntToStr(ord(err)));
-            writeln('WoopS! An error occured while parsing primary code! '#13#10'Error msg: ', ERRORMSG[err], ' at lexem #', nLexems ,', '#13#10'caused by ', lexems[nLexems-1]);
+            ShowMessage('WoopS! An error occured while parsing primary code! Code: ' + IntToStr(ord(err)) + ' caused by '+ lexems[nLexems-1]);
+            //writeln('WoopS! An error occured while parsing primary code! '#13#10'Error msg: ', ERRORMSG[err], ' at lexem #', nLexems ,', '#13#10'caused by ', lexems[nLexems-1]);
             finish := true;
         end;
         function readNextChar(out next_char: string) : TCharType;// protected way to read next char
