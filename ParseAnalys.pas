@@ -179,8 +179,6 @@ implementation
         begin
 
 
-        while cur <= nLexems do
-        begin
             if isOperator(cur) then
             begin
 
