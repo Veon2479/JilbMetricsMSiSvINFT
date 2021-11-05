@@ -45,6 +45,9 @@ begin
 
     AssignFile(fileIn, filename + '.txt', CP_UTF8);   // open file
 
+    // anCode -- get all lexems
+    //  lexems  -- dyn array of str with lexems
+    //  nLexems -- amount of lexems
     reset(fileIn);
     anCode(fileIn, lexems, nLexems);
     closeFile(fileIn);
@@ -57,7 +60,16 @@ begin
     closeFile(fileOut);
 
 
-    countLex(absDiff, relDiff, height, lexems);
+    // absDiff -- абс сложность
+    // relDiff -- отн сложность
+    // height  -- макс вложенность
+    writeln('BEGIN PROCESSING');
+    countLex(absDiff, relDiff, height, lexems, nLexems);
+    writeln('END PROCESSING');
+    //TempRes
+    writeln (' absDiff ', absDiff);
+    writeln (' relDiff ', relDiff);
+    writeln (' height  ', height);
      {
     assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
     rewrite(fileOut);
