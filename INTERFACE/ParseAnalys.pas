@@ -18,6 +18,22 @@ implementation
       curType: tLexType;
 
 
+    function isRepeat(const LEX: integer): boolean;
+      var
+        counter, cur: integer;
+      begin
+        RESULT:=false;
+        cur:=LEX+1;
+        counter:=1;
+        while counter<>0 do
+          begin
+            inc(cur);
+            if LEXEMS[cur]='(' then inc(counter)
+              else if LEXEMS[cur]=')' then dec(counter);
+          end;
+        if LEXEMS[cur+1]=';' then RESULT:=true;
+      end;
+
     function detType(const LEX: integer): tLexType;
     var tmp : string;
     begin
@@ -39,6 +55,11 @@ implementation
     begin
         //определить какая лексема текущая - возможное использование пробегания вперёд
         result := pos(' ' + lexems[LEX] + ' ', STR_OPERATORS) <> 0;
+        if LEXEMS[LEX]='while' then
+          if isRepeat(LEX) then result:=false;
+
+
+
     end;
 
     function findEnding(const LEX: integer; const LEXTYPE: tLexType): integer;

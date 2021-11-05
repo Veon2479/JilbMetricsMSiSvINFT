@@ -1,15 +1,9 @@
  public static void main(String[] args) {
-    switch(a){
-		case 1:  foo1(); 
-		case 2: if (a==b) c=d; foo2(); 
-		case 3: if (a==b) c=d; foo3(); 
-		default: if (a==b) c=d; fooD();
-		
-	
-	
-	}
-	
-	if (a==b) c=d;
-	
+    do
+	{
+		a++;
+	} while(a++);
+	if (a++) a++;
+		else a--;
 
     }
