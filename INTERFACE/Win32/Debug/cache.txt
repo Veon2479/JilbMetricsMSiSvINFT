@@ -1,3 +1,4 @@
+
 public static void main(String[] args) {
 	// hei = 1, op = 2
 	int a = args ? 0 : 1;
@@ -32,6 +33,7 @@ public static void main(String[] args) {
 
 	// hei = 5, op = 18
 
+
 	if (a % b >> 2) {
 		// hei = 1, op = 2
 		do {
@@ -41,7 +43,9 @@ public static void main(String[] args) {
 	} else {
 		// hei = 4, op = 14
 		for (int i = 10; i < 20; i++)
+
 			//hei = 3, op = 11
+
 			switch (i--) {
 				case a    : i++; b -= i; break;
 				case b    : i--; b += i; break;
@@ -53,6 +57,3 @@ public static void main(String[] args) {
  	// return;
 	
     }
-
-
-    
